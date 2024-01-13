@@ -423,8 +423,16 @@ export default class {
 
     if (!ffmpegInput) {
       // Not yet cached, must download
-      const info = await ytdl.getInfo(song.url);
-
+      const info = await ytdl.getInfo(song.url,{
+        //Need below to fix Age Restriction Issue
+        requestOptions: {
+          headers: {
+            cookie: process.env.YOUTUBE_COOKIE_STRING,
+            'x-youtube-client-name': process.env.X_YOUTUBE_CLIENT_NAME,
+            'x-youtube-client-version': process.env.X_YOUTUBE_CLIENT_VERSION
+          }
+      }});
+      
       const formats = info.formats as YTDLVideoFormat[];
 
       const filter = (format: ytdl.videoFormat): boolean => format.codecs === 'opus' && format.container === 'webm' && format.audioSampleRate !== undefined && parseInt(format.audioSampleRate, 10) === 48000;

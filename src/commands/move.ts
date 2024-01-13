@@ -42,6 +42,6 @@ export default class implements Command {
 
     const {title} = player.move(from, to);
 
-    await interaction.reply('moved **' + title + '** to position **' + String(to) + '**');
+    await interaction.reply('I moved **' + title + '** to **' + String(to) + '** for you!');
   }
 }

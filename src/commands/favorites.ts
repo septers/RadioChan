@@ -115,7 +115,7 @@ export default class implements Command {
     });
 
     if (!favorite) {
-      throw new Error('no favorite with that name exists');
+      throw new Error('No favorite with that name exists');
     }
 
     await this.addQueryToQueue.addToQueue({
@@ -135,7 +135,7 @@ export default class implements Command {
     });
 
     if (favorites.length === 0) {
-      await interaction.reply('there aren\'t any favorites yet');
+      await interaction.reply('You dont have any favorites yet silly!');
       return;
     }
 
@@ -167,7 +167,7 @@ export default class implements Command {
     }});
 
     if (existingFavorite) {
-      throw new Error('a favorite with that name already exists');
+      throw new Error('A favorite with that name already exists!');
     }
 
     await prisma.favoriteQuery.create({
@@ -179,7 +179,7 @@ export default class implements Command {
       },
     });
 
-    await interaction.reply('👍 favorite created');
+    await interaction.reply('Favorite created ❤️');
   }
 
   private async remove(interaction: ChatInputCommandInteraction) {
@@ -191,7 +191,7 @@ export default class implements Command {
     }});
 
     if (!favorite) {
-      throw new Error('no favorite with that name exists');
+      throw new Error('I wasn\'t able to locate a favorite with that name.');
     }
 
     const isUserGuildOwner = interaction.member!.user.id === interaction.guild!.ownerId;

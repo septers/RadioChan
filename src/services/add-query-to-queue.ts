@@ -63,11 +63,10 @@ export default class AddQueryToQueue {
           newSongs.push(...await this.getSongs.youtubePlaylist(url.searchParams.get('list')!, shouldSplitChapters));
         } else {
           const songs = await this.getSongs.youtubeVideo(url.href, shouldSplitChapters);
-
           if (songs) {
             newSongs.push(...songs);
           } else {
-            throw new Error('that doesn\'t exist');
+            throw new Error('That doesn\'t exist!');
           }
         }
       } else if (url.protocol === 'spotify:' || url.host === 'open.spotify.com') {
@@ -83,9 +82,9 @@ export default class AddQueryToQueue {
 
         if (nSongsNotFound !== 0) {
           if (nSongsNotFound === 1) {
-            extraMsg += '1 song was not found';
+            extraMsg += '1 song was not found, sowwy!';
           } else {
-            extraMsg += `${nSongsNotFound.toString()} songs were not found`;
+            extraMsg += `${nSongsNotFound.toString()} songs were not found, sowwy!`;
           }
         }
 
@@ -96,7 +95,7 @@ export default class AddQueryToQueue {
         if (song) {
           newSongs.push(song);
         } else {
-          throw new Error('that doesn\'t exist');
+          throw new Error('That doesn\'t exist!');
         }
       }
     } catch (_: unknown) {
@@ -106,12 +105,12 @@ export default class AddQueryToQueue {
       if (songs) {
         newSongs.push(...songs);
       } else {
-        throw new Error('that doesn\'t exist');
+        throw new Error('That doesn\'t exist!');
       }
     }
 
     if (newSongs.length === 0) {
-      throw new Error('no songs found');
+      throw new Error('No songs found T.T');
     }
 
     if (shuffleAdditions) {
@@ -162,9 +161,9 @@ export default class AddQueryToQueue {
     }
 
     if (newSongs.length === 1) {
-      await interaction.editReply(`u betcha, **${firstSong.title}** added to the${addToFrontOfQueue ? ' front of the' : ''} queue${extraMsg}`);
+      await interaction.editReply(`Anything for you, **${firstSong.title}** added to the${addToFrontOfQueue ? ' front of the' : ''} queue ❤️ ${extraMsg}`);
     } else {
-      await interaction.editReply(`u betcha, **${firstSong.title}** and ${newSongs.length - 1} other songs were added to the queue${extraMsg}`);
+      await interaction.editReply(`I did it, **${firstSong.title}** and ${newSongs.length - 1} other songs were added to the queue${extraMsg}`);
     }
   }
 }

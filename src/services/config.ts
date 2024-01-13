@@ -14,6 +14,9 @@ const CONFIG_MAP = {
   YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
   SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
   SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+  YOUTUBE_COOKIE_STRING: process.env.YOUTUBE_COOKIE_STRING,
+  X_YOUTUBE_CLIENT_NAME: process.env.X_YOUTUBE_CLIENT_NAME,
+  X_YOUTUBE_CLIENT_VERSION: process.env.X_YOUTUBE_CLIENT_VERSION,
   REGISTER_COMMANDS_ON_BOT: process.env.REGISTER_COMMANDS_ON_BOT === 'true',
   DATA_DIR,
   CACHE_DIR: path.join(DATA_DIR, 'cache'),
@@ -37,6 +40,9 @@ export default class Config {
   readonly YOUTUBE_API_KEY!: string;
   readonly SPOTIFY_CLIENT_ID!: string;
   readonly SPOTIFY_CLIENT_SECRET!: string;
+  readonly YOUTUBE_COOKIE_STRING!: string;
+  readonly X_YOUTUBE_CLIENT_NAME!: string;
+  readonly X_YOUTUBE_CLIENT_VERSION!: string;
   readonly REGISTER_COMMANDS_ON_BOT!: boolean;
   readonly DATA_DIR!: string;
   readonly CACHE_DIR!: string;

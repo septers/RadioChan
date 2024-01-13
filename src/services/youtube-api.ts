@@ -87,6 +87,7 @@ export default class {
 
     let firstVideo: Video | undefined;
 
+
     for (const item of items) {
       if (item.type === 'video') {
         firstVideo = item;
